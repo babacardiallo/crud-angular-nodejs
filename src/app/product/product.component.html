@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-4">
+    <div class="card" class="spacer">
+      <div class="card-header">
+        Nouveau Produit
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <form [formGroup]="AjouterForm" (ngSubmit)="OnAjouter()">
+            <input type="text" class="form-control" formControlName="name" placeholder="nom">
+            <br>
+            <input type="text" class="form-control" formControlName="price" placeholder="prix">
+            <br>
+            <button [disabled]="!AjouterForm.valid" type="submit" class="btn-primary btn-sm">Ajouter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-4">
+    <div class="card" class="spacer">
+      <div class="card-header">
+       Liste des Produits
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Prix</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let product of listofproduct">
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td><button class="btn-danger btn-sm" (click)="OnDelete(product)">Supprimer</button></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
